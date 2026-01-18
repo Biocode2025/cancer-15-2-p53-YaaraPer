@@ -147,3 +147,18 @@ protein = RNA_prot(gene_as_RNA)
 print(protein)      
 print(len(p53_genome))
 
+#
+for i in range(3):
+  num = random.randrange(3)
+  if num == 1:
+    p53_genome = Mutate_DNA(p53_genome)
+    print(1)
+  elif num == 2:
+    p53_genome = Insert_DNA(p53_genome)
+    print(2)
+  else:
+    p53_genome = Delete_DNA(p53_genome)
+    print(3)
+
+
+print(len(p53_genome))
