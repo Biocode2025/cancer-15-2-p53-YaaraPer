@@ -1,3 +1,5 @@
+import random
+
 def DNA_RNA_Cod(seq):
   '''
   הפונקציה דואגת שהאותיות תהיינה אחידות (אותיות גדולות) והופכת את רצף ה- DNA המקודד לרצף RNA.
@@ -63,7 +65,58 @@ def RNA_prot(seq):
       protein_seq += curr_amino_acid
   
   return protein_seq
+#------------------------------------------------
+
+def Insert_DNA(seq):
+  '''
+  הפונקציה תכניס במיקום אקראי לרצף ה- DNA של הגן נוקלאוטיד נוסף.
+  מקבלת: seq.
+  מחזירה: change_genome.
+  '''
+  nucleotide_list = ['T','G','C','A']
   
+  rand_nucleotide = random.choice(nucleotide_list)
+  rand_num = random.randrange(0,len(seq))
+  
+  change_genome = seq[0:rand_num]+ rand_nucleotide + seq[rand_num:]
+  
+  return change_genome
+#------------------------------------------------
+  
+def Delete_DNA(seq):
+  '''
+  הפונקציה תחסיר נוקלאוטיד במיקום רנדומאלי.
+  מקבלת: seq.
+  מחזירה: change_genome.
+  '''
+  rand_num = random.randrange(0,len(seq))
+  rand_nucleotide = seq[rand_num]
+  
+  change_genome = seq[:rand_num] + seq[rand_num + 1:]
+
+  return change_genome
+#------------------------------------------------
+
+def Mutate_DNA(seq):
+  '''
+  הפונקציה בוחרת מיקום אקראי ברצף גנום ה- HIV ומחליפה במיקום זה את הנוקלאוטיד באופן רנדומלי ל- A/C/G/T.
+  מקבלת: seq.
+  מחזירה:change_genome
+  '''
+  nucleotide_list = ['T','G','C','A']
+  
+  rand_nucleotide = random.choice(nucleotide_list)
+  rand_num = random.randrange(0,len(seq))
+  
+  if seq[rand_num] != rand_nucleotide:
+    change_genome = seq[0:rand_num]+ rand_nucleotide + seq[(rand_num+1):]
+  
+  else:
+    nucleotide_list.remove(rand_nucleotide)
+    rand_nucleotide = random.choice(nucleotide_list)
+    change_genome = seq[0:rand_num]+ rand_nucleotide + seq[(rand_num+1):]
+  return change_genome 
+
 # תוכנית ראשית.
 global RNA_codon_table
 RNA_codon_table = {}
@@ -87,8 +140,10 @@ for line in p53_seq:
     continue
   
   p53_genome = p53_genome + line
-  
+
+print(p53_genome[2:20]) 
 gene_as_RNA = DNA_RNA_Cod(p53_genome)
 protein = RNA_prot(gene_as_RNA)
-          
-print(len(protein))
+print(protein)      
+print(len(p53_genome))
+
