@@ -124,6 +124,7 @@ RNA_codon_table = {}
 # פתיחת הקבצים
 p53_seq = open('data/p53_sequence.fa', 'r')
 codon_file = open('data/codon_AA.txt', 'r')
+mutated_p53 = open('results/mutated_p53.fasta','w') 
 
 # קריאה לפונקציה
 Read_dict(codon_file)
@@ -141,24 +142,34 @@ for line in p53_seq:
   
   p53_genome = p53_genome + line
 
-print(p53_genome[2:20]) 
+# קריאה לפונקציות- שעתוק ותרגום הרצף.
 gene_as_RNA = DNA_RNA_Cod(p53_genome)
-protein = RNA_prot(gene_as_RNA)
-print(protein)      
-print(len(p53_genome))
+old_protein = RNA_prot(gene_as_RNA)
 
-#
+# התוכנית מבצעת שלוש מוטציות נקודתיות בצורה אקראית לאורך הרצף.
 for i in range(3):
   num = random.randrange(3)
   if num == 1:
     p53_genome = Mutate_DNA(p53_genome)
-    print(1)
   elif num == 2:
     p53_genome = Insert_DNA(p53_genome)
-    print(2)
   else:
     p53_genome = Delete_DNA(p53_genome)
-    print(3)
+
+# קריאה לפונקציות- שעתוק ותרגום הרצף.
+gene_as_RNA = DNA_RNA_Cod(p53_genome)
+new_protein = RNA_prot(gene_as_RNA)
+
+# כתיבת התוצאות בקובץ.
+mutated_p53.write("The original protein sequence: ")
+mutated_p53.write(old_protein + '\n')
+mutated_p53.write("The mutant protein sequence: ")
+mutated_p53.write(new_protein + '\n')
+mutated_p53.write("Conclusion: ")
+
+if len(old_protein) == len(new_protein) or len(old_protein) < len(new_protein):
+  mutated_p53.write("The protein was not shortened.")
+else:
+  mutated_p53.write("The protein was shortened.")
 
 
-print(len(p53_genome))
