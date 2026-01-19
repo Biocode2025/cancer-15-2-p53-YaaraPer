@@ -129,6 +129,7 @@ mutated_p53 = open('results/mutated_p53.fasta','w')
 # קריאה לפונקציה
 Read_dict(codon_file)
 
+# הגדרת משתנים
 p53_genome = ""
 new_HIV_genome = ""
 # קריאת הקובץ
@@ -167,9 +168,8 @@ mutated_p53.write("The mutant protein sequence: ")
 mutated_p53.write(new_protein + '\n')
 mutated_p53.write("Conclusion: ")
 
+# התוכנית בודקת האם נוצר קודון עצירה בחלבון המתורגם וכותבת את המסקנות לקובץ בהתאם לכך (האם החלבון התקצר או לא).
 if len(old_protein) == len(new_protein) or len(old_protein) < len(new_protein):
   mutated_p53.write("The protein was not shortened.")
 else:
-  mutated_p53.write("The protein was shortened.")
-
-
+  mutated_p53.write("The protein was shortened- a stop codon was created in the translated protein.")
