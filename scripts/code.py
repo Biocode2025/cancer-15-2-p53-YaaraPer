@@ -8,14 +8,10 @@ def DNA_RNA_Cod(seq):
   '''
   RNA_seq=""
 
-  for line in seq:
-    line = line.upper()
-    line = line.rstrip('\r\n')
-    
-    if line[0] != ">":
-      rna_line = line.replace("T","U")
-      RNA_seq += rna_line
-    
+  if seq[0] != ">":
+    seq = seq.upper()
+    rna_line = seq.replace("T","U")
+  
   return RNA_seq
 #------------------------------------------------
  
@@ -173,3 +169,9 @@ if len(old_protein) == len(new_protein) or len(old_protein) < len(new_protein):
   mutated_p53.write("The protein was not shortened.")
 else:
   mutated_p53.write("The protein was shortened- a stop codon was created in the translated protein.")
+
+# סגירת כל הקבצים
+p53_seq.close()
+codon_file.close()
+mutated_p53.close()
+
