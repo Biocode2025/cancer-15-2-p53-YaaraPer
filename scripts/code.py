@@ -149,6 +149,15 @@ for line in p53_seq:
 gene_as_RNA = DNA_RNA_Cod(p53_genome)
 old_protein = RNA_prot(gene_as_RNA)
 
+# התוכנית מבצעת שלוש מוטציות נקודתיות בצורה אקראית לאורך הרצף.
+for i in range(3):
+  num = random.randrange(3)
+  if num == 1:
+    p53_genome = Mutate_DNA(p53_genome)
+  elif num == 2:
+    p53_genome = Insert_DNA(p53_genome)
+  else:
+    p53_genome = Delete_DNA(p53_genome)
 
 
 
