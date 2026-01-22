@@ -176,5 +176,14 @@ if len(old_protein) == len(new_protein) or len(old_protein) < len(new_protein):
 else:
   mutated_p53.write("The protein was shortened- a stop codon was created in the translated protein.")
 
+# סגירת כל הקבצים
+p53_seq.close()
+codon_file.close()
+mutated_p53.close()
+
+
+
+
+
 
 
