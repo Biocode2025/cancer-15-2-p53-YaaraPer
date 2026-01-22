@@ -64,3 +64,19 @@ def RNA_prot(seq):
  
   return protein_seq
 #------------------------------------------------
+
+def Insert_DNA(seq):
+  '''
+  הפונקציה תכניס במיקום אקראי לרצף ה- DNA של הגן נוקלאוטיד נוסף.
+  מקבלת: seq.
+  מחזירה: change_genome.
+  '''
+  nucleotide_list = ['T','G','C','A']
+ 
+  rand_nucleotide = random.choice(nucleotide_list)
+  rand_num = random.randrange(0,len(seq))
+ 
+  change_genome = seq[0:rand_num]+ rand_nucleotide + seq[rand_num:]
+ 
+  return change_genome
+#------------------------------------------------
