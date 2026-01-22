@@ -163,5 +163,11 @@ for i in range(3):
 gene_as_RNA = DNA_RNA_Cod(p53_genome)
 new_protein = RNA_prot(gene_as_RNA)
 
+# כתיבת התוצאות בקובץ.
+mutated_p53.write("The original protein sequence: ")
+mutated_p53.write(old_protein + '\n')
+mutated_p53.write("The mutant protein sequence: ")
+mutated_p53.write(new_protein + '\n')
+mutated_p53.write("Conclusion: ")
 
 
