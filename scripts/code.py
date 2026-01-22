@@ -159,6 +159,9 @@ for i in range(3):
   else:
     p53_genome = Delete_DNA(p53_genome)
 
+# קריאה לפונקציות- שעתוק ותרגום הרצף.
+gene_as_RNA = DNA_RNA_Cod(p53_genome)
+new_protein = RNA_prot(gene_as_RNA)
 
 
 
