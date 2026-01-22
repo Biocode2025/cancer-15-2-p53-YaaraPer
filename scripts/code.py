@@ -10,7 +10,7 @@ def DNA_RNA_Cod(seq):
 
   if seq[0] != ">":
     seq = seq.upper()
-    rna_line = seq.replace("T","U")
+    RNA_seq = seq.replace("T","U")
   
   return RNA_seq
 #------------------------------------------------
@@ -116,6 +116,7 @@ def Mutate_DNA(seq):
 # תוכנית ראשית.
 global RNA_codon_table
 RNA_codon_table = {}
+
 
 # פתיחת הקבצים
 p53_seq = open('data/p53_sequence.fa', 'r')
