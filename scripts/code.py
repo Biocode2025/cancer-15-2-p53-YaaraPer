@@ -116,3 +116,18 @@ def Mutate_DNA(seq):
     rand_nucleotide = random.choice(nucleotide_list)
     change_genome = seq[0:rand_num]+ rand_nucleotide + seq[(rand_num+1):]
   return change_genome
+
+# תוכנית ראשית.
+global RNA_codon_table
+RNA_codon_table = {}
+
+# פתיחת הקבצים
+p53_seq = open('data/p53_sequence.fa', 'r')
+codon_file = open('data/codon_AA.txt', 'r')
+mutated_p53 = open('results/mutated_p53.fasta','w')
+
+
+
+
+
+
