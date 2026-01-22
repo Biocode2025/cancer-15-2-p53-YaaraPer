@@ -127,6 +127,24 @@ codon_file = open('data/codon_AA.txt', 'r')
 mutated_p53 = open('results/mutated_p53.fasta','w')
 
 
+# קריאה לפונקציה
+Read_dict(codon_file)
+
+# הגדרת משתנה
+p53_genome = ""
+
+# קריאת הקובץ
+for line in p53_seq:
+  line = line.rstrip('\r\n')
+  if line == "":
+    continue
+  # רצף ה DNA מופיע בשורות שאינן מתחילות בסימן "<" לכן "נדלג" על שורה זו
+  if line[0] == ">":
+    continue
+ 
+  p53_genome = p53_genome + line
+
+
 
 
 
