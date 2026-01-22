@@ -145,6 +145,10 @@ for line in p53_seq:
   p53_genome = p53_genome + line
 
 
+# קריאה לפונקציות- שעתוק ותרגום הרצף.
+gene_as_RNA = DNA_RNA_Cod(p53_genome)
+old_protein = RNA_prot(gene_as_RNA)
+
 
 
 
